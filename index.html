@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" >Magic Notes</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search" aria-label="Search">
+          </form>
+        </div>
+    </nav>
+
+    <!-- Creating new note -->
+    <div class="container">
+        <h1 class="my-4">Welcome to Magic Notes</h1>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add a Note</h5>
+                <div class="input-group" >
+                    <textarea class="form-control my-2" id="newNote" aria-label="With textarea" rows="4"></textarea>
+                </div>
+                <div class="my-2" id="emptyNote"></div>
+                <button type="submit" class="btn btn-primary" id="addNote">Add Note</button>
+            </div>
+        </div>
+        <hr>
+
+        <div class="noteSection">
+            <h2 class="my-2" id="notesHeading">Your Notes</h2>
+            <hr>
+            <div class="showNotes"></div>
+            <!-- <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Note</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <button class="btn btn-primary">Delete Note</button>
+              </div>
+            </div> -->
+        </div>
+
+
+    </div>
+
+   
+
+</body>
+
+<!-- <script src="js/scripts.js"></script> -->
+<script src="js/app.js"></script>
+</html>

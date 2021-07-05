@@ -1,0 +1,24 @@
+.navbar {
+  width: 100vw;
+}
+.card {
+  padding: 1rem;
+  /* width: 20rem; */
+}
+
+.card > * {
+  float: left;
+}
+.deleteBtn {
+  width: fit-content;
+  padding: 0 0.5rem;
+}
+
+.showNotes {
+  display: flex;
+  flex-wrap: wrap;
+}
+.noteCard {
+  width: 20vw;
+  margin: 0.5rem;
+}
