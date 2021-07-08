@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes App</title>
 
+    <script src="https://kit.fontawesome.com/e56d82c862.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Latest compiled and minified CSS -->
@@ -44,23 +46,23 @@
         <div class="card">
           <h5 class="card-title">Add a Note</h5>
           <div class="card-body">
-            <textarea class="form-control" placeholder="Title" id="title"></textarea>
+            <input class="form-control" placeholder="Title" id="title"></input>
             <div class="input-group" >
-                    <textarea class="form-control my-2" id="newNote" aria-label="With textarea" rows="4"></textarea>
-                </div>
-                <div class="my-2" id="emptyNote"></div>
-                <button type="submit" class="btn btn-primary" id="addNote">Add Note</button>
+              <textarea class="form-control my-2" id="newNote" aria-label="With textarea" rows="4"></textarea>
             </div>
+            <div class="my-2" id="emptyNote"></div>
+            <button type="submit" class="btn btn-primary" id="addNote">Add Note</button>
+          </div>
         </div>
         <hr>
-
+        
         <div class="noteSection">
-            <h2 class="my-2" id="notesHeading">Your Notes</h2>
-            <hr>
-            <div class="showNotes"></div>
-            <!-- <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></h5>
+          <h2 class="my-2" id="notesHeading">Your Notes</h2>
+          <hr>
+          <div class="showNotes"></div>
+          <!-- <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <button class="btn btn-primary">Delete Note</button>
               </div>

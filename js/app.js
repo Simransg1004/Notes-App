@@ -22,7 +22,21 @@ addNote.addEventListener("click", function (e) {
   }
   let title = document.querySelector("#title");
   if (newNote.value != "") {
-    notesArr.push([title.value, newNote.value]);
+    let obj;
+    if (title.value != "") {
+      obj = {
+        title: title.value,
+        text: newNote.value,
+        favourite: false,
+      };
+    } else {
+      obj = {
+        title: "Note",
+        text: newNote.value,
+        favourite: false,
+      };
+    }
+    notesArr.push(obj);
     localStorage.setItem("notes", JSON.stringify(notesArr));
     title.value = "";
     newNote.value = "";
@@ -44,24 +58,17 @@ function showNotesFunction() {
   }
   let html = "";
   notesArr.forEach((element, index) => {
-    if (element[1] != "") {
+    if (element.text != "") {
       document.getElementById("emptyNote").innerText = "";
-      if (element[0] != "") {
+      if (element.title != "") {
         html += `
         <div class="card noteCard" style="width: 18rem;">
         <div class="card-body">
-        <h5 class="card-title">${element[0]}</h5>
-        <p class="card-text">${element[1]}</p>
-        <button id=${index} onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
-        </div>
-        </div>     
-        `;
-      } else {
-        html += `
-        <div class="card noteCard" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">Note</h5>
-        <p class="card-text">${element[1]}</p>
+        <h5 class="card-title">${element.title}
+        <i id=${index} class="far fa-star unselectedStar" onclick="favourite(this.id)"></i>
+        <i id=${index} class="fas fa-star selectedStar" onclick="favourite(this.id)"></i>
+        </h5>
+        <p class="card-text">${element.text}</p>
         <button id=${index} onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
         </div>
         </div>     
@@ -75,6 +82,17 @@ function showNotesFunction() {
   } else {
     showNotes.innerHTML = `Oops! Nothing to show here.`;
   }
+  const selectedStars = document.querySelectorAll(".selectedStar");
+  const unselectedStars = document.querySelectorAll(".unselectedStar");
+  notesArr.forEach((note, index) => {
+    if (note.favourite == true) {
+      selectedStars[index].style.display = "block";
+      unselectedStars[index].style.display = "none";
+    } else {
+      unselectedStars[index].style.display = "block";
+      selectedStars[index].style.display = "none";
+    }
+  });
 }
 
 // Notes to be deleted
@@ -93,11 +111,11 @@ function deleteNote(index) {
 // Notes to be searched
 let search = document.querySelector("#search");
 search.addEventListener("input", function () {
-  let searchVal = search.value;
+  let searchVal = search.value.toLowerCase();
   let noteCards = document.getElementsByClassName("noteCard");
   Array.from(noteCards).forEach((card) => {
-    let cardTitle = card.querySelector("h5").innerText;
-    let cardTxt = card.querySelector("p").innerText;
+    let cardTitle = card.querySelector("h5").innerText.toLowerCase();
+    let cardTxt = card.querySelector("p").innerText.toLowerCase();
     if (cardTxt.includes(searchVal) || cardTitle.includes(searchVal)) {
       card.style.display = "block";
     } else {
@@ -105,3 +123,25 @@ search.addEventListener("input", function () {
     }
   });
 });
+
+// Adding to favorite
+function favourite(index) {
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesArr = [];
+  } else {
+    notesArr = JSON.parse(notes);
+  }
+  const selectedStars = document.querySelectorAll(".selectedStar");
+  const unselectedStars = document.querySelectorAll(".unselectedStar");
+  const favNote = notesArr[index];
+  favNote.favourite = !favNote.favourite;
+  localStorage.setItem("notes", JSON.stringify(notesArr));
+  if (favNote.favourite == true) {
+    selectedStars[index].style.display = "block";
+    unselectedStars[index].style.display = "none";
+  } else if (favNote.favourite == false) {
+    selectedStars[index].style.display = "none";
+    unselectedStars[index].style.display = "block";
+  }
+}

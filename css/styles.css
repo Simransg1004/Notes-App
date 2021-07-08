@@ -23,3 +23,15 @@
   width: 20vw;
   margin: 0.5rem;
 }
+.card-title {
+  display: flex;
+  justify-content: space-between;
+}
+/* .star {
+  background: url("img/unselectedStar");
+} */
+
+.selectedStar {
+  display: none;
+  color: rgb(228, 228, 6);
+}
